@@ -87,17 +87,15 @@ const partners = [
   <section class="section why" aria-labelledby="why-heading">
     <div class="container">
       <h2 id="why-heading" class="section-title">Why moyai</h2>
-      <p class="why-lead">A market you are already missing</p>
-      <div class="reason-grid">
-        {reasons.map((item, i) => (
-          <article class="reason">
-            <span class="reason-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-            <div>
-              <h3>{item.title}</h3>
-              <p class="text-muted">{item.body}</p>
-            </div>
-          </article>
-        ))}
+      <div class="why-box">
+        <ul class="reason-list">
+          {reasons.map((item) => (
+            <li>
+              <p class="reason-headline">{item.title}</p>
+              <p class="reason-body">{item.body}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   </section>
@@ -197,34 +195,37 @@ const partners = [
 
   /* Why Moyai */
   .why { background: hsl(var(--color-secondary) / 0.5); }
-  /* Subheading below the "Why moyai" H2 — supporting line, smaller than the
-     heading and centered so the H2 stays the clear title. */
-  .why-lead {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    text-align: center;
+  /* Shadow box holding the four points */
+  .why-box {
+    max-width: 760px;
+    margin: 2.5rem auto 0;
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    box-shadow: 0 20px 45px hsl(var(--color-foreground) / 0.1);
+    padding: 0.5rem 2rem;
+  }
+  .reason-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  /* All point text: one font (body), black, never bold */
+  .reason-list li {
+    padding: 1.5rem 0;
+  }
+  .reason-list li + li {
+    border-top: 1px solid hsl(var(--color-border));
+  }
+  .reason-headline,
+  .reason-body {
+    font-family: var(--font-body);
+    font-weight: 400;
     color: hsl(var(--color-foreground));
-    margin: 0 auto 0.5em;
-    max-width: 26ch;
+    margin: 0;
   }
-  .reason-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem 2.5rem;
-    margin-top: 2.5rem;
-  }
-  .reason { display: flex; gap: 1rem; }
-  .reason-num {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.5rem;
-    color: hsl(var(--color-primary));
-    line-height: 1.2;
-  }
-  .reason h3 { font-size: 1.2rem; }
+  .reason-headline { font-size: 1.0625rem; }
+  .reason-body { margin-top: 0.4rem; }
 
   /* Testimonial */
   .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
@@ -277,7 +278,7 @@ const partners = [
     .hero-grid { grid-template-columns: 1fr; }
     .hero-media { order: -1; }
     .card-grid { grid-template-columns: 1fr; }
-    .reason-grid { grid-template-columns: 1fr; }
+    .why-box { padding: 0.5rem 1.25rem; }
     .partner-logos { gap: 2.5rem; justify-content: center; }
     .partner-logos img { height: 110px; }
   }
