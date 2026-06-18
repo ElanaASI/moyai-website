@@ -141,21 +141,23 @@ const pvm = [
   <!-- Triple Impact Model -->
   <section class="section impact-section">
     <div class="container">
-      <h2 class="section-title">Triple Impact Model</h2>
-      <p class="impact-intro">
-        Moyai uniquely serves and bridges the gap between individuals, businesses, and
-        government, enabling systemic change and measurable inclusion outcomes.
-      </p>
       <div class="impact-grid">
+        <article class="card impact-lead">
+          <h2>Triple impact model</h2>
+          <p class="text-muted">
+            Moyai uniquely serves and bridges the gap between individuals, businesses, and
+            government, enabling systemic change and measurable inclusion outcomes.
+          </p>
+        </article>
         <article class="card">
-          <h3>Data for Purpose</h3>
+          <h3>Data for purpose</h3>
           <p class="text-muted">
             Highlights where access and inclusion are working well and where improvements are
             needed, delivering policy-ready data for inclusive planning.
           </p>
         </article>
         <article class="card">
-          <h3>Inclusive Employment Pathways</h3>
+          <h3>Inclusive employment pathways</h3>
           <p class="text-muted">
             Built to include people living with disabilities in the work we do, creating real
             job opportunities and using lived experience to improve communities.
@@ -292,17 +294,16 @@ const pvm = [
 
   /* Triple Impact Model */
   .impact-section { background: hsl(var(--color-secondary) / 0.5); }
-  .impact-intro {
-    text-align: center;
-    max-width: 62ch;
-    margin: 0 auto 2.5rem;
-    font-size: 1.1rem;
-    color: hsl(var(--color-foreground) / 0.85);
-  }
   .impact-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+  }
+  .impact-lead { grid-column: 1 / -1; }
+  .impact-lead h2 {
+    font-size: 1.5rem;
+    color: hsl(var(--color-foreground));
+    margin: 0 0 0.6rem;
   }
 
   .pvm-grid {
