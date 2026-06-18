@@ -86,8 +86,8 @@ const partners = [
   <!-- Why Moyai -->
   <section class="section why" aria-labelledby="why-heading">
     <div class="container">
-      <p class="eyebrow">Why moyai</p>
-      <h2 id="why-heading">A market you are already missing</h2>
+      <h2 id="why-heading" class="eyebrow">Why moyai</h2>
+      <p class="why-lead">A market you are already missing</p>
       <div class="reason-grid">
         {reasons.map((item, i) => (
           <article class="reason">
@@ -105,8 +105,7 @@ const partners = [
   <!-- Testimonial -->
   <section class="section testimonial" aria-labelledby="testimonial-heading">
     <div class="container">
-      <p class="eyebrow">What people are saying</p>
-      <h2 id="testimonial-heading" class="sr-only">Testimonial</h2>
+      <h2 id="testimonial-heading" class="eyebrow">What people are saying</h2>
       <figure>
         <blockquote>
           <p>
@@ -146,8 +145,7 @@ const partners = [
   <!-- Partners -->
   <section class="section partners" aria-labelledby="partners-heading">
     <div class="container">
-      <p class="eyebrow">Partners</p>
-      <h2 id="partners-heading" class="sr-only">Partners</h2>
+      <h2 id="partners-heading" class="eyebrow">Partners</h2>
       <ul class="partner-logos">
         {partners.map((p) => (
           <li><img src={p.src} alt={p.name} loading="lazy" /></li>
@@ -199,6 +197,17 @@ const partners = [
 
   /* Why Moyai */
   .why { background: hsl(var(--color-secondary) / 0.5); }
+  /* Headline below the "Why moyai" heading — styled like a display heading but
+     not itself a heading element, so the section keeps one clean H2. */
+  .why-lead {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: hsl(var(--color-foreground));
+    margin: 0 0 0.5em;
+  }
   .reason-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
