@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stats = [
+  { value: '5.5M', label: 'Australians live with disability' },
+  { value: '5.9M', label: 'Australians have chronic health conditions' },
+  { value: '44%', label: 'avoid outings due to accessibility barriers' },
+  { value: '40%', label: 'depend on daily informal or family support' },
+];
+
+const values = [
+  { title: 'Clarity', body: 'A profound understanding through insight.' },
+  { title: 'Compassion', body: 'Act with care and consideration.' },
+  { title: 'Evolution', body: 'Leading through curiosity and learning.' },
+  { title: 'Amplifying', body: 'Make the unheard roar.' },
+];
+
+const pvm = [
+  { label: 'Purpose', body: 'To ensure everyone can live a fulfilling life.' },
+  { label: 'Vision', body: 'We see a world that works for all bodies, minds and needs.' },
+  { label: 'Mission', body: 'We are the trusted source for accessibility tools, data and action.' },
+];
+---
+
+<Layout
+  title="About — Moyai"
+  description="Moyai was founded by physiotherapist Elana Fernandes to build a world that works for all bodies, minds and needs — grounded in empathy and shaped by lived experience."
+>
+  <!-- Intro -->
+  <section class="section about-hero">
+    <div class="container narrow">
+      <p class="eyebrow">About Moyai</p>
+      <h1>How the story began</h1>
+      <p class="lead">
+        Moyai was established by physiotherapist Elana Fernandes, motivated by her brother's
+        disability experience and her professional work with disabled clients. The company
+        exists to create a world that works for all bodies, minds and needs — grounded in
+        empathy and shaped by lived experience.
+      </p>
+    </div>
+  </section>
+
+  <!-- Problem / Reality / Solution -->
+  <section class="section">
+    <div class="container">
+      <div class="trio">
+        <article>
+          <h3>The problem</h3>
+          <p class="text-muted">
+            Millions of Australians with disabilities encounter preventable obstacles to
+            participating in everyday activities.
+          </p>
+        </article>
+        <article>
+          <h3>The reality</h3>
+          <p class="text-muted">
+            Many venues are not designed with accessibility in mind, and clear, reliable
+            accessibility information is still lacking.
+          </p>
+        </article>
+        <article>
+          <h3>Our approach</h3>
+          <p class="text-muted">
+            We give businesses intuitive accessibility and inclusion auditing tools and
+            resources, empowering them to welcome up to 20% more customers.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section stats-section">
+    <div class="container">
+      <h2>The scale of the opportunity</h2>
+      <ul class="stat-grid">
+        {stats.map((s) => (
+          <li>
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label text-muted">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="goal">We aim to improve accessibility and inclusion across <strong>50,000 businesses by 2032</strong>.</p>
+    </div>
+  </section>
+
+  <!-- Purpose / Vision / Mission -->
+  <section class="section">
+    <div class="container">
+      <div class="pvm-grid">
+        {pvm.map((item) => (
+          <article class="pvm">
+            <h3>{item.label}</h3>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </div>
+      <p class="reinvest">
+        More than 50% of Moyai's profits are reinvested into creating meaningful employment
+        pathways for people living with disabilities, enhancing our accessibility monitoring
+        tools and building more inclusive communities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section values-section">
+    <div class="container">
+      <p class="eyebrow">Our values</p>
+      <h2>What guides us</h2>
+      <div class="card-grid">
+        {values.map((v) => (
+          <article class="card">
+            <h3>{v.title}</h3>
+            <p class="text-muted">{v.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .narrow { max-width: 64ch; }
+  .about-hero { background: hsl(var(--color-secondary) / 0.5); }
+  .lead { font-size: 1.2rem; color: hsl(var(--color-foreground) / 0.85); }
+
+  .trio {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .trio h3 { color: hsl(var(--color-primary-foreground)); }
+
+  .stats-section { background: hsl(var(--color-secondary) / 0.5); }
+  .stat-grid {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .stat-grid li {
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 2.25rem;
+    color: hsl(var(--color-primary));
+  }
+  .stat-label { display: block; margin-top: 0.5rem; font-size: 0.95rem; }
+  .goal { margin-top: 2rem; font-size: 1.15rem; }
+
+  .pvm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .pvm {
+    border-left: 4px solid hsl(var(--color-primary));
+    padding-left: 1.25rem;
+  }
+  .reinvest { margin-top: 2.5rem; max-width: 70ch; font-size: 1.1rem; }
+
+  .values-section { background: hsl(var(--color-secondary) / 0.5); }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 880px) {
+    .trio, .pvm-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .stat-grid, .card-grid { grid-template-columns: 1fr; }
+  }
+</style>

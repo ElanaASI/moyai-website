@@ -1,0 +1,159 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Moyai — Accessibility that grows your business',
+  description = 'Moyai verifies venue accessibility in person, so your reservations team can answer confidently and guests can book with certainty. Built by allied health professionals.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL; // e.g. "/moyai-website"
+const url = (path: string) => `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+
+const navLinks = [
+  { label: 'Home', href: url('') },
+  { label: 'About', href: url('about') },
+];
+const currentYear = 2026;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#f17aa9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Heebo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={url('')} aria-label="Moyai home">
+          <img src={url('logos/moyai-horizontal.svg')} alt="Moyai" width="150" height="44" />
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          {navLinks.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+          <a class="btn btn-primary nav-cta" href="mailto:hello@moyai.com.au?subject=Book%20a%20demo">Book a demo</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <img src={url('logos/moyai-horizontal.svg')} alt="Moyai" width="170" height="50" />
+          <p class="text-muted footer-acknowledgement">
+            Moyai was created on the Sunshine Coast, home of the Kabi Kabi and Jinibara
+            peoples, the Traditional Custodians of this land; we pay our respects to Elders
+            past and present.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@moyai.com.au">hello@moyai.com.au</a></li>
+            <li><a href="tel:+61457385389">0457 385 389</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow us</h4>
+          <ul>
+            <li><a href="https://facebook.com/moyai.access.inclusion" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://instagram.com/moyai_ai" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://linkedin.com/company/moyai" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p class="text-muted">Copyright © {currentYear} Moyai Pty Ltd – ABN 81 678 413 664</p>
+      </div>
+    </footer>
+
+    <style>
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: hsl(var(--color-background) / 0.9);
+        backdrop-filter: saturate(180%) blur(10px);
+        border-bottom: 1px solid hsl(var(--color-border));
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 72px;
+      }
+      .brand img { height: 40px; width: auto; }
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.75rem;
+      }
+      .site-nav > a:not(.btn) {
+        font-family: var(--font-heading);
+        font-weight: 500;
+        color: hsl(var(--color-foreground));
+      }
+      .site-nav > a:not(.btn):hover { color: hsl(var(--color-primary-foreground)); text-decoration: underline; text-underline-offset: 4px; }
+      .nav-cta { padding: 0.55rem 1.25rem; }
+
+      .site-footer {
+        background: hsl(var(--color-secondary));
+        margin-top: 2rem;
+        padding-block: 3.5rem 1.5rem;
+        border-top: 1px solid hsl(var(--color-border));
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2.5rem;
+      }
+      .footer-brand img { height: 46px; width: auto; margin-bottom: 1rem; }
+      .footer-acknowledgement { max-width: 42ch; font-size: 0.95rem; }
+      .footer-col h4 { font-size: 1rem; margin-bottom: 0.85rem; }
+      .footer-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+      .footer-col a { color: hsl(var(--color-secondary-foreground)); }
+      .footer-col a:hover { color: hsl(var(--color-primary-foreground)); text-decoration: underline; }
+      .footer-bottom {
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid hsl(var(--color-border));
+      }
+      .footer-bottom p { margin: 0; font-size: 0.9rem; }
+
+      @media (max-width: 760px) {
+        .site-nav { gap: 1rem; }
+        .site-nav > a:not(.btn) { display: none; }
+        .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+const bookDemo = 'mailto:hello@moyai.com.au?subject=Book%20a%20demo';
+
+const valueProps = [
+  {
+    title: 'Verified in Person',
+    body:
+      'We audit your accessible rooms and shared spaces in person, collecting granular data down to door widths, rail positions and floor surface types. Accurate, reliable and collected by allied health professionals.',
+  },
+  {
+    title: 'Ready when your guests call',
+    body:
+      'Your reservations team gets instant access to verified accessibility information for your accessible rooms, so when a guest with accessibility needs calls, you can answer confidently and email them exactly what they need to book with certainty.',
+  },
+  {
+    title: 'Built by allied health professionals',
+    body:
+      'Moyai was founded by a physiotherapist and exercise physiologist who assess properties using the same clinical precision they bring to patient care. When we verify something, your guests can trust it.',
+  },
+];
+
+const reasons = [
+  {
+    title: 'Unlock a market you are already missing.',
+    body:
+      'One in five Australians lives with a disability. Most are invisible to your property online because accessibility information is missing or too vague to trust.',
+  },
+  {
+    title: 'Verified by allied health professionals, not self-reported.',
+    body:
+      'When we verify your accessibility information, your guests can rely on it to book with confidence.',
+  },
+  {
+    title: 'Save your team time on every enquiry.',
+    body:
+      'Your reservations team gets instant, accurate answers. No running to rooms. No guesswork. Just a confident response and a booking made.',
+  },
+  {
+    title: 'Be among the first verified properties on the Sunshine Coast.',
+    body:
+      'We are onboarding a small number of pilot properties now. Early partners secure founding rates.',
+  },
+];
+
+const partners = [
+  { name: 'QTI', src: url('images/partner-qti.png') },
+  { name: 'Queensland Social Enterprise Council', src: url('images/partner-qsec.png') },
+  { name: 'People + Planet First Verified Social Enterprise', src: url('images/partner-ppf.jpg') },
+];
+---
+
+<Layout>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>Accessibility that grows your business</h1>
+        <p class="hero-sub">Verified in person. Trusted by your guests. Ready when they enquire.</p>
+        <a class="btn btn-primary" href={bookDemo}>Book a demo</a>
+      </div>
+      <div class="hero-media">
+        <img src={url('images/hero.png')} alt="Moyai accessibility verification" width="1992" height="950" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Value propositions -->
+  <section class="section" aria-labelledby="value-heading">
+    <div class="container">
+      <h2 id="value-heading" class="sr-only">Value propositions</h2>
+      <div class="card-grid">
+        {valueProps.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p class="text-muted">{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Moyai -->
+  <section class="section why" aria-labelledby="why-heading">
+    <div class="container">
+      <p class="eyebrow">Why Moyai</p>
+      <h2 id="why-heading">A market you are already missing</h2>
+      <div class="reason-grid">
+        {reasons.map((item, i) => (
+          <article class="reason">
+            <span class="reason-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p class="text-muted">{item.body}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section testimonial" aria-labelledby="testimonial-heading">
+    <div class="container">
+      <p class="eyebrow">What people are saying</p>
+      <h2 id="testimonial-heading" class="sr-only">Testimonial</h2>
+      <figure>
+        <blockquote>
+          <p>
+            When Moyai approached us, we were eager to have them audit Ardo's online
+            presence—across our website and partner booking platforms like Booking.com.
+            Moyai far exceeded our expectations with a comprehensive review of our digital
+            listings, covering everything from hotel rooms to our restaurants and Rooftop Pool.
+          </p>
+          <p>
+            They identified key accessibility information that had been previously overlooked
+            and clearly explained the importance and benefits of addressing these gaps. Simple
+            yet impactful fixes, such as adding alt text to images, were highlighted with
+            practical recommendations. Importantly, Moyai also audited our team's knowledge of
+            accessibility, helping us understand how staff awareness directly influences the
+            guest experience. Their insights have empowered our team to better support guests
+            of all abilities.
+          </p>
+          <p>
+            Moyai's audit showcased their deep expertise in accessibility and provided
+            invaluable guidance that will significantly enhance the experience we offer. Their
+            contribution has been truly transformative.
+          </p>
+        </blockquote>
+        <figcaption>— Brent Clark, General Manager of Ardo | The Ville Resort - Casino</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section cta" aria-labelledby="cta-heading">
+    <div class="container cta-inner">
+      <h2 id="cta-heading">Stop losing bookings from guests with accessibility needs. Join the Moyai pilot today.</h2>
+      <a class="btn btn-primary" href={bookDemo}>Book a demo</a>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="section partners" aria-labelledby="partners-heading">
+    <div class="container">
+      <p class="eyebrow">Partners</p>
+      <h2 id="partners-heading" class="sr-only">Partners</h2>
+      <ul class="partner-logos">
+        {partners.map((p) => (
+          <li><img src={p.src} alt={p.name} loading="lazy" /></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+    background:
+      radial-gradient(1200px 500px at 80% -10%, hsl(var(--color-primary) / 0.16), transparent 60%),
+      hsl(var(--color-secondary) / 0.4);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+  .hero-sub {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: hsl(var(--color-muted));
+    max-width: 34ch;
+    margin-bottom: 2rem;
+  }
+  .hero-media img {
+    border-radius: var(--radius);
+    box-shadow: 0 30px 60px hsl(var(--color-foreground) / 0.12);
+  }
+
+  /* Value cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: 0 1px 2px hsl(var(--color-foreground) / 0.04);
+  }
+  .card h3 { color: hsl(var(--color-primary-foreground)); }
+
+  /* Why Moyai */
+  .why { background: hsl(var(--color-secondary) / 0.5); }
+  .reason-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 2.5rem;
+    margin-top: 2.5rem;
+  }
+  .reason { display: flex; gap: 1rem; }
+  .reason-num {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: hsl(var(--color-primary));
+    line-height: 1.2;
+  }
+  .reason h3 { font-size: 1.2rem; }
+
+  /* Testimonial */
+  .testimonial figure { margin: 1.5rem 0 0; max-width: 70ch; }
+  .testimonial blockquote {
+    margin: 0;
+    font-size: 1.125rem;
+    color: hsl(var(--color-foreground) / 0.85);
+    border-left: 4px solid hsl(var(--color-primary));
+    padding-left: 1.5rem;
+  }
+  .testimonial figcaption {
+    margin-top: 1rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  /* CTA */
+  .cta { background: hsl(var(--color-primary) / 0.12); }
+  .cta-inner { text-align: center; max-width: 48ch; margin-inline: auto; }
+  .cta-inner h2 { margin-bottom: 1.75rem; }
+
+  /* Partners */
+  .partner-logos {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+  }
+  .partner-logos img {
+    height: 90px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(0.15);
+    opacity: 0.9;
+  }
+
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-media { order: -1; }
+    .card-grid { grid-template-columns: 1fr; }
+    .reason-grid { grid-template-columns: 1fr; }
+    .partner-logos { gap: 2rem; justify-content: center; }
+    .partner-logos img { height: 70px; }
+  }
+</style>
