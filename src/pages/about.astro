@@ -178,10 +178,22 @@ const pvm = [
           </article>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Purpose statement banner -->
+  <section class="purpose-section">
+    <div class="container">
+      <h2 class="section-title">Purpose statement</h2>
       <p class="reinvest">
         More than 50% of Moyai's profits are reinvested into creating meaningful employment
         pathways for people living with disabilities, enhancing our accessibility monitoring
         tools and building more inclusive communities.
+      </p>
+      <p class="reinvest">
+        By continually improving our platform and tools, we empower businesses with the
+        insights they need to make smarter, targeted accessibility investments, creating
+        spaces where everyone can confidently participate and belong.
       </p>
     </div>
   </section>
@@ -314,7 +326,17 @@ const pvm = [
     border-left: 4px solid hsl(var(--color-primary));
     padding-left: 1.25rem;
   }
-  .reinvest { margin-top: 2.5rem; max-width: 70ch; font-size: 1.1rem; }
+  .purpose-section {
+    background: hsl(var(--color-primary));
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+  .reinvest {
+    max-width: 70ch;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  .reinvest + .reinvest { margin-top: 1.25rem; }
 
   .values-section { background: hsl(var(--color-secondary) / 0.5); }
   .card-grid {
