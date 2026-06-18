@@ -1,6 +1,36 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const base = import.meta.env.BASE_URL;
+const url = (path: string) => `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
+
+const storyImages = [
+  {
+    src: url('images/story-short-hair-smile.jpg'),
+    alt: 'A lady with short hair and a warm smile facing the camera.',
+    w: 931,
+    h: 1071,
+  },
+  {
+    src: url('images/story-couple-power-wheelchair.jpg'),
+    alt: 'A man standing next to his wife who is a power drive wheelchair user.',
+    w: 886,
+    h: 1133,
+  },
+  {
+    src: url('images/story-tina-races.jpg'),
+    alt: 'Tina, a Moyai user, sitting on a white folding chair dressed up for the races.',
+    w: 768,
+    h: 1024,
+  },
+  {
+    src: url('images/story-flowers-wheelchair.jpg'),
+    alt: 'A lady sitting in a wheelchair with a warm smile and a large bunch of flowers on her lap.',
+    w: 571,
+    h: 1024,
+  },
+];
+
 const stats = [
   { value: '5.5 million', label: 'Australians live with disability' },
   { value: '5.9 million', label: 'Australians have chronic health conditions' },
@@ -28,23 +58,30 @@ const pvm = [
 >
   <!-- Intro -->
   <section class="section about-hero">
-    <div class="container narrow">
-      <h1>How the story began</h1>
-      <p class="lead">
-        Venues are rarely designed with people living with disability in mind. Too often,
-        accessibility information is missing or unclear, leaving people guessing, stressing,
-        or staying at home. For businesses, this means lost opportunities to welcome and
-        retain valuable customers.
-      </p>
-      <p class="lead">
-        Moyai was co-founded by physiotherapist Elana Fernandes, inspired by her brother who
-        lives with a disability and by the clients she has cared for throughout her career.
-        Seeing the barriers they face made the challenge personal and urgent.
-      </p>
-      <p class="lead">
-        Step by step, Moyai is working towards a world that works for all bodies, minds and
-        needs, grounded in empathy and shaped by lived experience.
-      </p>
+    <div class="container story-grid">
+      <div class="story-copy">
+        <h1>How the story began</h1>
+        <p class="lead">
+          Venues are rarely designed with people living with disability in mind. Too often,
+          accessibility information is missing or unclear, leaving people guessing, stressing,
+          or staying at home. For businesses, this means lost opportunities to welcome and
+          retain valuable customers.
+        </p>
+        <p class="lead">
+          Moyai was co-founded by physiotherapist Elana Fernandes, inspired by her brother who
+          lives with a disability and by the clients she has cared for throughout her career.
+          Seeing the barriers they face made the challenge personal and urgent.
+        </p>
+        <p class="lead">
+          Step by step, Moyai is working towards a world that works for all bodies, minds and
+          needs, grounded in empathy and shaped by lived experience.
+        </p>
+      </div>
+      <div class="story-media">
+        {storyImages.map((img) => (
+          <img src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" />
+        ))}
+      </div>
     </div>
   </section>
 
@@ -168,6 +205,30 @@ const pvm = [
   .about-hero { background: hsl(var(--color-secondary) / 0.5); }
   .lead { font-size: 1.2rem; color: hsl(var(--color-foreground) / 0.85); }
 
+  /* Story intro: copy beside a grid of photos */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  .story-copy { max-width: 60ch; }
+  .story-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .story-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 30px hsl(var(--color-foreground) / 0.12);
+    filter: grayscale(1);
+  }
+
   .trio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -270,6 +331,8 @@ const pvm = [
   }
 
   @media (max-width: 880px) {
+    .story-grid { grid-template-columns: 1fr; }
+    .story-copy { max-width: none; }
     .trio, .pvm-grid { grid-template-columns: 1fr; }
     .trio article { padding: 1.25rem 0; }
     .trio article + article { border-left: none; border-top: 1px solid hsl(var(--color-border)); }
