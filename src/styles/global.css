@@ -2,7 +2,7 @@
   /* Brand colour tokens (HSL components, matching the original Moyai site) */
   --color-background: 0 0% 100%;
   --color-foreground: 224 71% 4%;
-  --color-muted: 215 16% 47%;
+  --color-muted: 215 19% 40%;
   --color-primary: 331 78% 71%;          /* Moyai pink #f17aa9 */
   --color-primary-foreground: 330 10% 12%;
   --color-secondary: 330 25% 96%;
@@ -25,6 +25,11 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+}
+
+/* Keep focused/anchored targets clear of the sticky header (WCAG 2.4.11) */
+:where(h1, h2, h3, h4, h5, h6, [id], main) {
+  scroll-margin-top: 7rem;
 }
 
 body {
@@ -121,8 +126,12 @@ img { max-width: 100%; height: auto; display: block; }
 a:focus-visible,
 button:focus-visible,
 .btn:focus-visible {
-  outline: 3px solid hsl(var(--color-primary));
-  outline-offset: 3px;
+  outline: 3px solid hsl(var(--color-foreground));
+  outline-offset: 2px;
+}
+/* White ring for the dark skip-link so its focus is visible on its own background */
+.skip-link:focus-visible {
+  outline-color: #fff;
 }
 
 .skip-link {
@@ -149,4 +158,18 @@ button:focus-visible,
   clip: rect(0,0,0,0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Respect users who prefer reduced motion (vestibular safety) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
