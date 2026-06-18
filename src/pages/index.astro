@@ -86,7 +86,7 @@ const partners = [
   <!-- Why Moyai -->
   <section class="section why" aria-labelledby="why-heading">
     <div class="container">
-      <h2 id="why-heading" class="eyebrow">Why moyai</h2>
+      <h2 id="why-heading" class="section-title">Why moyai</h2>
       <p class="why-lead">A market you are already missing</p>
       <div class="reason-grid">
         {reasons.map((item, i) => (
@@ -105,7 +105,7 @@ const partners = [
   <!-- Testimonial -->
   <section class="section testimonial" aria-labelledby="testimonial-heading">
     <div class="container">
-      <h2 id="testimonial-heading" class="eyebrow">What people are saying</h2>
+      <h2 id="testimonial-heading" class="section-title">What people are saying</h2>
       <figure>
         <blockquote>
           <p>
@@ -145,7 +145,7 @@ const partners = [
   <!-- Partners -->
   <section class="section partners" aria-labelledby="partners-heading">
     <div class="container">
-      <h2 id="partners-heading" class="eyebrow">Partners</h2>
+      <h2 id="partners-heading" class="section-title">Partners</h2>
       <ul class="partner-logos">
         {partners.map((p) => (
           <li><img src={p.src} alt={p.name} loading="lazy" /></li>
@@ -197,16 +197,18 @@ const partners = [
 
   /* Why Moyai */
   .why { background: hsl(var(--color-secondary) / 0.5); }
-  /* Headline below the "Why moyai" heading — styled like a display heading but
-     not itself a heading element, so the section keeps one clean H2. */
+  /* Subheading below the "Why moyai" H2 — supporting line, smaller than the
+     heading and centered so the H2 stays the clear title. */
   .why-lead {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    line-height: 1.15;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+    line-height: 1.25;
     letter-spacing: -0.01em;
+    text-align: center;
     color: hsl(var(--color-foreground));
-    margin: 0 0 0.5em;
+    margin: 0 auto 0.5em;
+    max-width: 26ch;
   }
   .reason-grid {
     display: grid;
@@ -225,7 +227,7 @@ const partners = [
   .reason h3 { font-size: 1.2rem; }
 
   /* Testimonial */
-  .testimonial figure { margin: 1.5rem 0 0; max-width: 70ch; }
+  .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
   .testimonial blockquote {
     margin: 0;
     font-size: 1.125rem;
@@ -244,13 +246,11 @@ const partners = [
   .cta-inner { text-align: center; max-width: 48ch; margin-inline: auto; }
   .cta-inner h2 { margin-bottom: 1.75rem; }
 
-  /* Section labels: sentence case + black for WCAG 2.2 AA readability/contrast */
-  .why .eyebrow,
-  .testimonial .eyebrow,
-  .partners .eyebrow {
-    text-transform: none;
-    letter-spacing: normal;
-    color: hsl(var(--color-foreground));
+  /* Section H2 titles: equal size (inherits the global h2 clamp, so responsive),
+     centered, near-black. */
+  .section-title {
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
   /* Partners */
