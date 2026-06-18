@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL;
 const url = (path: string) => `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
-const bookDemo = 'mailto:hello@moyai.com.au?subject=Let%27s%20talk';
+const bookDemo = 'https://outlook.office.com/book/Moyai1@moyai.com.au/';
 
 const valueProps = [
   {
@@ -60,7 +60,7 @@ const partners = [
       <div class="hero-copy">
         <h1>Accessibility that grows your business</h1>
         <p class="hero-sub">Verified. Trusted by your guests. Ready when they enquire.</p>
-        <a class="btn btn-primary" href={bookDemo}>Let's talk</a>
+        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer">Let's talk</a>
       </div>
       <div class="hero-media">
         <img src={url('images/hero.png')} alt="Example of a Moyai accessibility report for a hotel room, showing verified details such as entry, flooring, and sensory information." width="1992" height="950" />
@@ -139,7 +139,7 @@ const partners = [
         <span class="cta-headline">Stop losing bookings from guests with accessibility needs.</span>
         <span class="cta-subline">Join the Moyai pilot today.</span>
       </h2>
-      <a class="btn btn-primary" href={bookDemo}>Let's talk</a>
+      <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer">Let's talk</a>
     </div>
   </section>
 
