@@ -202,14 +202,14 @@ const pvm = [
   <section class="section values-section">
     <div class="container">
       <h2 class="section-title">Moyai company values</h2>
-      <div class="card-grid">
+      <ul class="values-list">
         {values.map((v) => (
-          <article class="card">
+          <li class="value-item">
             <h3>{v.title}</h3>
             <p class="text-muted">{v.body}</p>
-          </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 </Layout>
@@ -341,12 +341,15 @@ const pvm = [
   .reinvest + .reinvest { margin-top: 1.25rem; }
 
   .values-section { background: hsl(var(--color-secondary) / 0.5); }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+  .values-list {
+    list-style: none;
+    margin: 2rem auto 0;
+    padding: 0;
+    max-width: 52ch;
+    text-align: center;
   }
+  .value-item + .value-item { margin-top: 2rem; }
+  .value-item h3 { margin-bottom: 0.4rem; }
   .card {
     background: #fff;
     border: 1px solid hsl(var(--color-border));
@@ -362,9 +365,8 @@ const pvm = [
     .trio article + article { border-left: none; border-top: 1px solid hsl(var(--color-border)); }
     .impact-grid { grid-template-columns: 1fr; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
-    .card-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 520px) {
-    .stat-grid, .card-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr; }
   }
 </style>
