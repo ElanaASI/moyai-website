@@ -86,7 +86,7 @@ const partners = [
   <!-- Why Moyai -->
   <section class="section why" aria-labelledby="why-heading">
     <div class="container">
-      <p class="eyebrow">Why Moyai</p>
+      <p class="eyebrow">Why moyai</p>
       <h2 id="why-heading">A market you are already missing</h2>
       <div class="reason-grid">
         {reasons.map((item, i) => (
@@ -234,6 +234,15 @@ const partners = [
   .cta { background: hsl(var(--color-primary) / 0.12); }
   .cta-inner { text-align: center; max-width: 48ch; margin-inline: auto; }
   .cta-inner h2 { margin-bottom: 1.75rem; }
+
+  /* Section labels: sentence case + black for WCAG 2.2 AA readability/contrast */
+  .why .eyebrow,
+  .testimonial .eyebrow,
+  .partners .eyebrow {
+    text-transform: none;
+    letter-spacing: normal;
+    color: hsl(var(--color-foreground));
+  }
 
   /* Partners */
   .partners { text-align: center; }
