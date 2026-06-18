@@ -291,7 +291,7 @@ const pvm = [
   .stat-label { display: block; margin-top: 0.5rem; font-size: 0.95rem; color: hsl(var(--color-foreground)); }
   /* Full-width pink commitment banner */
   .commitment {
-    background: hsl(var(--color-primary));
+    background: hsl(var(--color-primary) / 0.45);
     padding-block: 2.75rem;
   }
   .commitment .goal {
@@ -328,7 +328,8 @@ const pvm = [
     padding-left: 1.25rem;
   }
   .purpose-section {
-    background: hsl(var(--color-primary));
+    border-top: 2px solid hsl(var(--color-primary));
+    border-bottom: 2px solid hsl(var(--color-primary));
     padding-block: clamp(3rem, 6vw, 4.5rem);
   }
   .reinvest {
