@@ -186,8 +186,9 @@ const partners = [
   <section class="section testimonial" aria-labelledby="testimonial-heading">
     <div class="container">
       <h2 id="testimonial-heading" class="section-title">What people are saying</h2>
-      <figure>
-        <blockquote>
+      <div class="testimonial-box">
+        <figure>
+          <blockquote>
           <p>
             When Moyai approached us, we were eager to have them audit Ardo's online
             presence, across our website and partner booking platforms like Booking.com.
@@ -210,7 +211,8 @@ const partners = [
           </p>
         </blockquote>
         <figcaption>Brent Clark, General Manager of Ardo, The Ville Resort, Casino</figcaption>
-      </figure>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -372,19 +374,28 @@ const partners = [
     max-width: 48ch;
   }
 
-  /* Testimonial */
-  .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
+  /* Testimonial: soft-pink section (like Why Moyai), white box with a pink outline */
+  .testimonial { background: hsl(var(--color-secondary) / 0.5); }
+  .testimonial-box {
+    max-width: 760px;
+    margin: 2.5rem auto 0;
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    box-shadow: 0 20px 45px hsl(var(--color-foreground) / 0.1);
+    padding: 2rem 2.5rem;
+  }
+  .testimonial figure { margin: 0; }
   .testimonial blockquote {
     margin: 0;
     font-size: 1.125rem;
     color: #000;
-    border-left: 4px solid hsl(var(--color-primary));
-    padding-left: 1.5rem;
   }
   .testimonial figcaption {
     margin-top: 1rem;
     font-family: var(--font-heading);
     font-weight: 600;
+    color: #000;
   }
 
   /* Partners */
@@ -430,6 +441,7 @@ const partners = [
     .steps { grid-template-columns: 1fr; }
     .card-grid { grid-template-columns: 1fr; }
     .why-box { padding: 0.5rem 1.25rem; }
+    .testimonial-box { padding: 1.5rem 1.25rem; }
     .partner-logos { gap: 2.5rem; justify-content: center; }
     .partner-logos img { height: 110px; }
   }
