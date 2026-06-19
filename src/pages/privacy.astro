@@ -357,4 +357,11 @@ import Layout from '../layouts/Layout.astro';
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+  /* Contact links sit on their own line, so give them a full 24px target
+     (WCAG 2.2 AA, 2.5.8 Target Size) rather than relying on the inline exception. */
+  .legal .contact-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
 </style>
