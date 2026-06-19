@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const base = import.meta.env.BASE_URL;
 const url = (path: string) => `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`;
 const bookDemo = 'https://outlook.office.com/book/Moyai1@moyai.com.au/';
+const ctaAria = "Let's talk, book a call with Moyai (opens in a new tab)";
 
 const valueProps = [
   {
@@ -47,9 +48,9 @@ const reasons = [
 ];
 
 const partners = [
-  { name: 'QTI', src: url('images/partner-qti.png') },
-  { name: 'Queensland Social Enterprise Council', src: url('images/partner-qsec.png') },
-  { name: 'People + Planet First Verified Social Enterprise', src: url('images/partner-ppf.jpg') },
+  { name: 'Queensland Tourism Industry Council', href: 'https://www.qtic.com.au/', src: url('images/partner-qti.png') },
+  { name: 'Queensland Social Enterprise Council', href: 'https://www.qsec.org.au/', src: url('images/partner-qsec.png') },
+  { name: 'People and Planet First', href: 'https://peopleandplanetfirst.org/', src: url('images/partner-ppf.jpg') },
 ];
 ---
 
@@ -60,7 +61,7 @@ const partners = [
       <div class="hero-copy">
         <h1>Accessibility that grows your business</h1>
         <p class="hero-sub">Verified. Trusted by your guests. Ready when they enquire.</p>
-        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer">Let's talk<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer" aria-label={ctaAria}>Let's talk</a>
       </div>
       <div class="hero-media">
         <img src={url('images/hero.png')} alt="Example of a Moyai accessibility report for a hotel room, showing verified details such as entry, flooring, and sensory information." width="1992" height="950" />
@@ -68,17 +69,37 @@ const partners = [
     </div>
   </section>
 
-  <!-- Value propositions -->
-  <section class="section" aria-labelledby="value-heading">
+  <!-- The problem / The reality / Our approach -->
+  <section class="section">
     <div class="container">
-      <h2 id="value-heading" class="sr-only">Value propositions</h2>
-      <div class="card-grid">
-        {valueProps.map((item) => (
-          <article class="card">
-            <h3>{item.title}</h3>
-            <p class="text-muted">{item.body}</p>
-          </article>
-        ))}
+      <div class="trio">
+        <article>
+          <h2>The problem</h2>
+          <p class="text-muted">
+            Accessible rooms exist. The information guests need to book with confidence does
+            not. Information becomes inconsistent across platforms, goes out of date, and no
+            longer reflects what a property actually offers. Guests call. Staff guess. Bookings
+            go elsewhere.
+          </p>
+        </article>
+        <article>
+          <h2>The reality</h2>
+          <p class="text-muted">
+            Travellers with accessibility needs took 70.5 million trips in Australia in 2024
+            and spent $29.2 billion, 17% of total visitor spend. Travelling in groups of 3.2
+            on average, every accessible room booking is effectively a group booking. Most
+            accommodation providers are not capitalising on that opportunity.
+          </p>
+        </article>
+        <article>
+          <h2>Our approach</h2>
+          <p class="text-muted">
+            Moyai verifies the accessibility of your property and powers a booking assistant
+            for your reservations team. When a guest asks about roll-in showers, grab rail
+            placement, or wheelchair clearance, your staff have a verified answer ready. No
+            guessing. No running to the room. No lost booking.
+          </p>
+        </article>
       </div>
     </div>
   </section>
@@ -98,7 +119,22 @@ const partners = [
         </ul>
       </div>
       <div class="why-cta">
-        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer">Let's talk<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer" aria-label={ctaAria}>Let's talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value propositions -->
+  <section class="section" aria-labelledby="value-heading">
+    <div class="container">
+      <h2 id="value-heading" class="sr-only">Value propositions</h2>
+      <div class="card-grid">
+        {valueProps.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p class="text-muted">{item.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -135,14 +171,14 @@ const partners = [
     </div>
   </section>
 
-  <!-- Final CTA -->
+  <!-- Be the hotel that gets it right banner -->
   <section class="section cta" aria-labelledby="cta-heading">
     <div class="container cta-inner">
-      <h2 id="cta-heading">
-        <span class="cta-headline">Stop losing bookings from guests with accessibility needs.</span>
-        <span class="cta-subline">Join the Moyai pilot today.</span>
-      </h2>
-      <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer">Let's talk<span class="sr-only"> (opens in a new tab)</span></a>
+      <h2 id="cta-heading">Be the hotel that gets it right.</h2>
+      <p class="cta-body">
+        When a guest with accessibility needs calls, your team has the answer. Every time.
+      </p>
+      <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer" aria-label={ctaAria}>Let's talk</a>
     </div>
   </section>
 
@@ -152,7 +188,11 @@ const partners = [
       <h2 id="partners-heading" class="section-title">Partners</h2>
       <ul class="partner-logos">
         {partners.map((p) => (
-          <li><img src={p.src} alt={p.name} loading="lazy" /></li>
+          <li>
+            <a href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${p.name} (opens in a new tab)`}>
+              <img src={p.src} alt={`${p.name} logo`} loading="lazy" />
+            </a>
+          </li>
         ))}
       </ul>
     </div>
@@ -184,20 +224,19 @@ const partners = [
     box-shadow: 0 30px 60px hsl(var(--color-foreground) / 0.12);
   }
 
-  /* Value cards */
-  .card-grid {
+  /* The problem / The reality / Our approach */
+  .trio {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    text-align: center;
   }
-  .card {
-    background: #fff;
-    border: 1px solid hsl(var(--color-border));
-    border-radius: var(--radius);
-    padding: 1.75rem;
-    box-shadow: 0 1px 2px hsl(var(--color-foreground) / 0.04);
+  .trio article { padding: 0 2rem; }
+  .trio article + article { border-left: 1px solid hsl(var(--color-border)); }
+  .trio h2 {
+    font-size: 1.375rem;
+    color: hsl(var(--color-primary-foreground));
+    margin-bottom: 0.6rem;
   }
-  .card h3 { color: hsl(var(--color-primary-foreground)); }
 
   /* Why Moyai */
   .why { background: hsl(var(--color-secondary) / 0.5); }
@@ -242,6 +281,21 @@ const partners = [
     margin-top: 2.5rem;
   }
 
+  /* Value cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: 0 1px 2px hsl(var(--color-foreground) / 0.04);
+  }
+  .card h3 { color: hsl(var(--color-primary-foreground)); }
+
   /* Testimonial */
   .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
   .testimonial blockquote {
@@ -257,16 +311,19 @@ const partners = [
     font-weight: 600;
   }
 
-  /* CTA */
+  /* Be the hotel that gets it right banner */
   .cta { background: hsl(var(--color-primary) / 0.12); }
-  .cta-inner { text-align: center; margin-inline: auto; }
-  /* First sentence spreads across the full width; second sits underneath */
+  .cta-inner { text-align: center; margin-inline: auto; max-width: 60ch; }
   .cta-inner h2 {
-    font-size: clamp(1.5rem, 3vw, 2.1rem);
-    margin-bottom: 1.75rem;
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    margin-bottom: 1rem;
   }
-  .cta-headline { display: block; }
-  .cta-subline { display: block; margin-top: 0.5rem; }
+  .cta-body {
+    font-size: 1.125rem;
+    color: hsl(var(--color-foreground));
+    margin: 0 auto 1.75rem;
+    max-width: 48ch;
+  }
 
   /* Partners */
   .partners { text-align: center; }
@@ -280,6 +337,20 @@ const partners = [
     justify-content: center;
     gap: 3.5rem;
   }
+  .partner-logos a {
+    display: inline-flex;
+    border-radius: var(--radius);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .partner-logos a:hover,
+  .partner-logos a:focus-visible {
+    transform: translateY(-2px);
+  }
+  .partner-logos a:hover img,
+  .partner-logos a:focus-visible img {
+    opacity: 1;
+    filter: none;
+  }
   .partner-logos img {
     height: 150px;
     width: auto;
@@ -291,6 +362,9 @@ const partners = [
   @media (max-width: 880px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-media { order: -1; }
+    .trio { grid-template-columns: 1fr; }
+    .trio article { padding: 1.25rem 0; }
+    .trio article + article { border-left: none; border-top: 1px solid hsl(var(--color-border)); }
     .card-grid { grid-template-columns: 1fr; }
     .why-box { padding: 0.5rem 1.25rem; }
     .partner-logos { gap: 2.5rem; justify-content: center; }

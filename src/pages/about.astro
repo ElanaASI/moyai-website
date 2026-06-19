@@ -93,41 +93,6 @@ const pvm = [
     </div>
   </section>
 
-  <!-- Problem / Reality / Solution -->
-  <section class="section">
-    <div class="container">
-      <div class="trio">
-        <article>
-          <h2>The problem</h2>
-          <p class="text-muted">
-            Accessible rooms exist. The information guests need to book with confidence does
-            not. Information becomes inconsistent across platforms, goes out of date, and no
-            longer reflects what a property actually offers. Guests call. Staff guess. Bookings
-            go elsewhere.
-          </p>
-        </article>
-        <article>
-          <h2>The reality</h2>
-          <p class="text-muted">
-            Travellers with accessibility needs took 70.5 million trips in Australia in 2024
-            and spent $29.2 billion, 17% of total visitor spend. Travelling in groups of 3.2
-            on average, every accessible room booking is effectively a group booking. Most
-            accommodation providers are not capitalising on that opportunity.
-          </p>
-        </article>
-        <article>
-          <h2>Our approach</h2>
-          <p class="text-muted">
-            Moyai verifies the accessibility of your property and powers a booking assistant
-            for your reservations team. When a guest asks about roll-in showers, grab rail
-            placement, or wheelchair clearance, your staff have a verified answer ready. No
-            guessing. No running to the room. No lost booking.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <!-- Stats -->
   <section class="section stats-section" aria-labelledby="stats-heading">
     <div class="container">
@@ -261,18 +226,6 @@ const pvm = [
     filter: grayscale(1);
   }
 
-  .trio {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    text-align: center;
-  }
-  .trio article { padding: 0 2rem; }
-  .trio article + article { border-left: 1px solid hsl(var(--color-border)); }
-  .trio h2 {
-    font-size: 1.375rem;
-    color: hsl(var(--color-primary-foreground));
-    margin-bottom: 0.6rem;
-  }
 
   .stats-section { background: hsl(var(--color-secondary) / 0.5); }
   .stat-grid {
@@ -378,9 +331,7 @@ const pvm = [
   @media (max-width: 880px) {
     .story-grid { grid-template-columns: 1fr; }
     .story-copy { max-width: none; }
-    .trio, .pvm-grid { grid-template-columns: 1fr; }
-    .trio article { padding: 1.25rem 0; }
-    .trio article + article { border-left: none; border-top: 1px solid hsl(var(--color-border)); }
+    .pvm-grid { grid-template-columns: 1fr; }
     .impact-grid { grid-template-columns: 1fr; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
   }
