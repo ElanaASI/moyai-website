@@ -111,12 +111,10 @@ const pvm = [
     </div>
   </section>
 
-  <!-- Commitment banner -->
-  <section class="commitment">
-    <div class="container">
-      <p class="goal">Moyai is committed to improving the accessibility and inclusion of 50,000 businesses by 2032.</p>
-    </div>
-  </section>
+  <!-- Section divider -->
+  <div class="container">
+    <hr class="section-divider" />
+  </div>
 
   <!-- Triple Impact Model -->
   <section class="section impact-section">
@@ -260,19 +258,11 @@ const pvm = [
     color: hsl(var(--color-foreground));
   }
   .stat-label { display: block; margin-top: 0.5rem; font-size: 0.95rem; color: hsl(var(--color-foreground)); }
-  /* Full-width pink commitment banner */
-  .commitment {
-    background: hsl(var(--color-primary) / 0.45);
-    padding-block: 2.75rem;
-  }
-  .commitment .goal {
-    margin: 0 auto;
-    max-width: 64ch;
-    text-align: center;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: hsl(var(--color-foreground));
+  /* Thin brand-pink section divider (replaces the old commitment banner) */
+  .section-divider {
+    border: 0;
+    border-top: 2px solid #ff7bac; /* official Moyai brand pink */
+    margin: 0;
   }
 
   /* Triple Impact Model */
