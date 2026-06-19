@@ -1,12 +1,13 @@
 :root {
   /* Brand colour tokens (HSL components, matching the original Moyai site) */
   --color-background: 0 0% 100%;
-  --color-foreground: 224 71% 4%;
-  --color-muted: 215 19% 40%;
+  /* All text colours are pure black (#000) per brand requirement; no grey/off-black */
+  --color-foreground: 0 0% 0%;
+  --color-muted: 0 0% 0%;
   --color-primary: 331 78% 71%;          /* Moyai pink #f17aa9 */
-  --color-primary-foreground: 330 10% 12%;
+  --color-primary-foreground: 0 0% 0%;
   --color-secondary: 330 25% 96%;
-  --color-secondary-foreground: 330 20% 20%;
+  --color-secondary-foreground: 0 0% 0%;
   --color-border: 220 13% 91%;
 
   --font-heading: "Heebo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

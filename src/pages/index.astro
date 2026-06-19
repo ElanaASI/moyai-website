@@ -47,6 +47,23 @@ const reasons = [
   },
 ];
 
+const steps = [
+  {
+    title: 'Book a 20 minute call',
+    body: 'A quick conversation to explore whether Moyai is the right fit for your property.',
+  },
+  {
+    title: 'We collect and verify your accessibility data',
+    body:
+      'Working with your team to gather and verify the information that matters to guests with accessibility and sensory needs.',
+  },
+  {
+    title: 'Your property is ready',
+    body:
+      'Your reservations team answers every accessibility enquiry with confidence and your verified accessibility information is consistent across your website and OTA listings.',
+  },
+];
+
 const partners = [
   { name: 'Queensland Tourism Industry Council', href: 'https://www.qtic.com.au/', src: url('images/partner-qti.png') },
   { name: 'Queensland Social Enterprise Council', href: 'https://www.qsec.org.au/', src: url('images/partner-qsec.png') },
@@ -124,6 +141,32 @@ const partners = [
     </div>
   </section>
 
+  <!-- How it works -->
+  <section class="section how" aria-labelledby="how-heading">
+    <div class="container">
+      <h2 id="how-heading" class="section-title">How it works</h2>
+      <ol class="steps">
+        {steps.map((step) => (
+          <li class="step">
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Be the hotel that gets it right banner -->
+  <section class="section cta" aria-labelledby="cta-heading">
+    <div class="container cta-inner">
+      <h2 id="cta-heading">Be the hotel that gets it right.</h2>
+      <p class="cta-body">
+        When a guest with accessibility needs calls, your team has the answer. Every time.
+      </p>
+      <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer" aria-label={ctaAria}>Let's talk</a>
+    </div>
+  </section>
+
   <!-- Value propositions -->
   <section class="section" aria-labelledby="value-heading">
     <div class="container">
@@ -168,17 +211,6 @@ const partners = [
         </blockquote>
         <figcaption>Brent Clark, General Manager of Ardo, The Ville Resort, Casino</figcaption>
       </figure>
-    </div>
-  </section>
-
-  <!-- Be the hotel that gets it right banner -->
-  <section class="section cta" aria-labelledby="cta-heading">
-    <div class="container cta-inner">
-      <h2 id="cta-heading">Be the hotel that gets it right.</h2>
-      <p class="cta-body">
-        When a guest with accessibility needs calls, your team has the answer. Every time.
-      </p>
-      <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer" aria-label={ctaAria}>Let's talk</a>
     </div>
   </section>
 
@@ -281,6 +313,36 @@ const partners = [
     margin-top: 2.5rem;
   }
 
+  /* How it works (ordered steps) */
+  .steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .step {
+    counter-increment: step;
+    background: #fff;
+    border: 1px solid hsl(var(--color-border));
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: 0 1px 2px hsl(var(--color-foreground) / 0.04);
+  }
+  .step::before {
+    content: "Step " counter(step);
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #000;
+    margin-bottom: 0.5rem;
+  }
+  .step h3 { margin: 0 0 0.4rem; }
+  .step p { margin: 0; }
+
   /* Value cards */
   .card-grid {
     display: grid;
@@ -296,21 +358,6 @@ const partners = [
   }
   .card h3 { color: hsl(var(--color-primary-foreground)); }
 
-  /* Testimonial */
-  .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
-  .testimonial blockquote {
-    margin: 0;
-    font-size: 1.125rem;
-    color: hsl(var(--color-foreground) / 0.85);
-    border-left: 4px solid hsl(var(--color-primary));
-    padding-left: 1.5rem;
-  }
-  .testimonial figcaption {
-    margin-top: 1rem;
-    font-family: var(--font-heading);
-    font-weight: 600;
-  }
-
   /* Be the hotel that gets it right banner */
   .cta { background: hsl(var(--color-primary) / 0.12); }
   .cta-inner { text-align: center; margin-inline: auto; max-width: 60ch; }
@@ -320,9 +367,24 @@ const partners = [
   }
   .cta-body {
     font-size: 1.125rem;
-    color: hsl(var(--color-foreground));
+    color: #000;
     margin: 0 auto 1.75rem;
     max-width: 48ch;
+  }
+
+  /* Testimonial */
+  .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
+  .testimonial blockquote {
+    margin: 0;
+    font-size: 1.125rem;
+    color: #000;
+    border-left: 4px solid hsl(var(--color-primary));
+    padding-left: 1.5rem;
+  }
+  .testimonial figcaption {
+    margin-top: 1rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
   }
 
   /* Partners */
@@ -365,6 +427,7 @@ const partners = [
     .trio { grid-template-columns: 1fr; }
     .trio article { padding: 1.25rem 0; }
     .trio article + article { border-left: none; border-top: 1px solid hsl(var(--color-border)); }
+    .steps { grid-template-columns: 1fr; }
     .card-grid { grid-template-columns: 1fr; }
     .why-box { padding: 0.5rem 1.25rem; }
     .partner-logos { gap: 2.5rem; justify-content: center; }
