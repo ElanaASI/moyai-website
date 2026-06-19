@@ -64,6 +64,13 @@ const steps = [
   },
 ];
 
+const stats = [
+  { value: '5.5 million', label: 'Australians live with disability' },
+  { value: '5.9 million', label: 'Australians have chronic health conditions' },
+  { value: '44%', label: 'avoid outings due to accessibility barriers' },
+  { value: '40%', label: 'depend on daily informal or family support' },
+];
+
 const partners = [
   { name: 'Queensland Tourism Industry Council', href: 'https://www.qtic.com.au/', src: url('images/partner-qti.png') },
   { name: 'Queensland Social Enterprise Council', href: 'https://www.qsec.org.au/', src: url('images/partner-qsec.png') },
@@ -212,6 +219,27 @@ const partners = [
         </blockquote>
         <figcaption>Brent Clark, General Manager of Ardo, The Ville Resort, Casino</figcaption>
         </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics -->
+  <section class="section stats-section" aria-labelledby="stats-heading">
+    <div class="container">
+      <h2 id="stats-heading" class="sr-only">The scale of the opportunity</h2>
+      <ul class="stat-grid">
+        {stats.map((s) => (
+          <li>
+            <svg class="stat-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
+            </svg>
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="stats-cta">
+        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer" aria-label={ctaAria}>Let's talk</a>
       </div>
     </div>
   </section>
@@ -398,6 +426,42 @@ const partners = [
     color: #000;
   }
 
+  /* Statistics */
+  .stats-section { background: hsl(var(--color-secondary) / 0.5); }
+  .stat-grid {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .stat-grid li {
+    position: relative;
+    background: #fff;
+    border: 2px solid hsl(var(--color-primary));
+    border-radius: var(--radius);
+    padding: 1.75rem 1.5rem 1.5rem;
+    text-align: center;
+  }
+  .stat-icon {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 22px;
+    height: 22px;
+    color: hsl(var(--color-primary));
+  }
+  .stat-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.375rem;
+    color: hsl(var(--color-foreground));
+  }
+  .stat-label { display: block; margin-top: 0.5rem; font-size: 0.95rem; color: hsl(var(--color-foreground)); }
+  .stats-cta { text-align: center; margin-top: 2.5rem; }
+
   /* Partners */
   .partners { text-align: center; }
   .partner-logos {
@@ -442,7 +506,11 @@ const partners = [
     .card-grid { grid-template-columns: 1fr; }
     .why-box { padding: 0.5rem 1.25rem; }
     .testimonial-box { padding: 1.5rem 1.25rem; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
     .partner-logos { gap: 2.5rem; justify-content: center; }
     .partner-logos img { height: 110px; }
+  }
+  @media (max-width: 520px) {
+    .stat-grid { grid-template-columns: 1fr; }
   }
 </style>
