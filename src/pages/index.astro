@@ -25,24 +25,24 @@ const valueProps = [
 
 const reasons = [
   {
-    title: 'Unlock a market you are already missing.',
+    title: 'Minimal disruption, maximum return',
     body:
-      'One in five Australians lives with a disability. Most are invisible to your property online because accessibility information is missing or too vague to trust.',
+      "Setup is straightforward and fits around your operations. Once your accessibility data is verified and loaded, your team can keep it current in house with Moyai's support. No ongoing disruption. Just a reservations team that answers accessibility enquiries with confidence.",
   },
   {
-    title: 'Verified by allied health professionals, not self-reported.',
+    title: 'Accessibility is more than a ramp at the front door',
     body:
-      'When we verify your accessibility information, your guests can rely on it to book with confidence.',
+      'Accessibility spans mobility, sensory, cognitive and communication needs. Most properties have more to offer than they realise and most are not communicating it.',
   },
   {
-    title: 'Save your team time on every enquiry.',
+    title: 'Already have accessibility information on your website?',
     body:
-      'Your reservations team gets instant, accurate answers. No running to rooms. No guesswork. Just a confident response and a booking made.',
+      'Most properties do. But is it verified, consistent across every platform and specific enough for a guest to make a confident booking decision? Moyai ensures what you say matches what you have.',
   },
   {
-    title: 'Be among the first verified properties on the Sunshine Coast.',
+    title: 'Too busy right now?',
     body:
-      'We are onboarding a small number of pilot properties now. Early partners secure founding rates.',
+      'We get it. That is why we have made the process as streamlined as possible. Once set up, Moyai reduces the time your team spends on accessibility enquiries, increases accessible room bookings and gives you clear visibility on return from your accessible inventory.',
   },
 ];
 
@@ -91,11 +91,14 @@ const partners = [
         <ul class="reason-list">
           {reasons.map((item) => (
             <li>
-              <p class="reason-headline">{item.title}</p>
+              <h3 class="reason-headline">{item.title}</h3>
               <p class="reason-body">{item.body}</p>
             </li>
           ))}
         </ul>
+      </div>
+      <div class="why-cta">
+        <a class="btn btn-primary" href={bookDemo} target="_blank" rel="noopener noreferrer">Let's talk<span class="sr-only"> (opens in a new tab)</span></a>
       </div>
     </div>
   </section>
@@ -213,22 +216,31 @@ const partners = [
     margin: 0;
     padding: 0;
   }
-  /* All point text: one font (body), black, never bold */
   .reason-list li {
     padding: 1.5rem 0;
   }
   .reason-list li + li {
     border-top: 1px solid hsl(var(--color-border));
   }
-  .reason-headline,
+  /* Headline reads as a bold heading (real <h3>); body stays regular weight */
+  .reason-headline {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    color: hsl(var(--color-foreground));
+    margin: 0 0 0.4rem;
+  }
   .reason-body {
     font-family: var(--font-body);
     font-weight: 400;
     color: hsl(var(--color-foreground));
     margin: 0;
   }
-  .reason-headline { font-size: 1.0625rem; }
-  .reason-body { margin-top: 0.4rem; }
+  .why-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
 
   /* Testimonial */
   .testimonial figure { margin: 1.5rem auto 0; max-width: 70ch; }
